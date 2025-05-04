@@ -29,11 +29,11 @@ Username : onos, Password : rocks
 
 ## - Activate applications in onos
 	
-Go to the main menu -> Applications
+In onos web gui go to the main menu -> Applications
 	
 Activate the following applications : 
 
-	OpenFlow Base Provider (org.onosproject.openflow-base)
+	OpenFlow Base Provider (org.onosproject.openflow-base)  
 
 	Proxy ARP/NDP (org.onosproject.proxyarp)
 
@@ -54,6 +54,8 @@ Activate the following applications :
 	
 	apt install nano
 	
-	nano mytpo.py
+	nano mytopo.py
+
+copy and paste mytopo.py file
 	
 	
