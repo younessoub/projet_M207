@@ -1,26 +1,27 @@
 ## - Ubuntu Vm
 
-Create a ubuntu vm and run `sudo apt update && sudo apt upgrade -y` 
+Create a ubuntu vm and run 
+	sudo apt update && sudo apt upgrade -y 
 
 ## - Clone the repositry
 
-`git clone https://github.com/younessoub/projet_M207.git`
+	git clone https://github.com/younessoub/projet_M207.git
 
 ## - Install docker
 
-`https://docs.docker.com/engine/install/ubuntu/`
+	https://docs.docker.com/engine/install/ubuntu/
 	
 ## - Pull Onos Image 
-`sudo docker pull onosproject/onos`
+	sudo docker pull onosproject/onos
 
 ## - Pull Containernet Image
-`sudo  docker pull containernet/containernet`
+	sudo  docker pull containernet/containernet
 
 ## - Change Directory to our project
-`cd projet_M207`
+	cd projet_M207
 	    
 ## - Run docker-compose.yaml file
-`docker compose up`
+	docker compose up
 
 ## - Access Onos web GUI
 http://localhost:8181/onos/ui/
@@ -44,12 +45,15 @@ Activate the following applications :
 
 
 ## - Create a custom ubuntu vm using the Dockerfile
-`sudo docker build -t ubuntuvm .`
+	sudo docker build -t ubuntuvm .
 
 ## - Access the containernet container and create a new python file
-`sudo docker exec -it containernet bash`
-`touch mytopo.py`
-`apt install nano`
-`nano mytpo.py`
+	sudo docker exec -it containernet bash
+	
+	touch mytopo.py
+	
+	apt install nano
+	
+	nano mytpo.py
 	
 	
