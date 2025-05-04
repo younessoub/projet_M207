@@ -44,7 +44,7 @@ Activate the following applications :
 	Reactive Forwarding (org.onosproject.fwd)
 
 
-## - Create a custom ubuntu vm using the Dockerfile
+## - Create a custom ubuntu vm image using the Dockerfile
 	sudo docker build -t ubuntuvm .
 
 ## - Access the containernet container and create a new python file
@@ -56,6 +56,6 @@ Activate the following applications :
 	
 	nano mytopo.py
 
-copy and paste mytopo.py file
-	
-	
+copy and paste mytopo.py file from the repositry and run :
+	mn -c
+	python mytopo.py	
