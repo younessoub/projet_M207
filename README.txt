@@ -12,29 +12,8 @@
  - Pull Containernet Image
 	sudo  docker pull containernet/containernet
 
- - Create docker-compose.yml
-	version: '3.3'
-
-	services:
-	  onos:
-	    image: onosproject/onos:latest
-	    restart: always
-	    ports:
-	      - "8181:8181"
-	      - "6633:6633"
-	      - "6653:6653"
-	    container_name: onos
-
-	  containernet: 
-	    depends_on: 
-	      - onos
-	    image: containernet/containernet:v1
-	    volumes:
-	      - "/var/run/docker.sock:/var/run/docker.sock"      
-	    privileged: true
-	    pid: host
-	    tty: true
-	    container_name: containernet
+ - Change Directory to our project
+	cd projet_M207
 	    
  - Run docker-compose.yaml file
 	docker compose up
