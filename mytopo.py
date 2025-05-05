@@ -25,9 +25,10 @@ info('*** Adding gateway container\n')
 gateway = net.addDocker('gateway', ip='192.168.1.1', mac='00:00:00:00:00:01', dimage="ubuntuvm")
 
 info('*** Adding docker containers\n')
-h1 = net.addDocker('h1', ip='192.168.10.1', mac='9a:d8:73:d8:90:6a', dimage="ubuntuvm")
-h2 = net.addHost('h2', ip='192.168.20.1', mac='9a:d8:73:d8:90:6b')
-h3 = net.addHost('h3', ip='192.168.20.2', mac='9a:d8:73:d8:90:6c')
+h1 = net.addDocker('h1', ip='192.168.10.1', mac='9a:d8:73:d8:90:6a', dimage="ubuntu:trusty")
+info('*** Adding hosts\n')
+h2 = net.addHost('h2',  ip='192.168.20.1', mac='9a:d8:73:d8:90:6b')
+h3 = net.addHost('h3',  ip='192.168.20.2', mac='9a:d8:73:d8:90:6c')
 
 info('*** Adding switches\n')
 s1 = net.addSwitch('s1')

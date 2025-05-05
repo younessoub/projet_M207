@@ -1,6 +1,6 @@
 ## - Ubuntu Vm
 
-Create a ubuntu vm and run 
+Create ubuntu vm and run 
 	sudo apt update && sudo apt upgrade -y 
 
 ## - Clone the repositry
@@ -57,5 +57,6 @@ Activate the following applications :
 	nano mytopo.py
 
 copy and paste mytopo.py file from the repositry and run :
+	
 	mn -c
 	python mytopo.py	
