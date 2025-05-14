@@ -47,6 +47,11 @@ Activate the following applications :
 ## - Create a custom ubuntu vm image using the Dockerfile
 	sudo docker build -t ubuntuvm .
 
+## - Create two vms for kubernetes
+Create two vms one as a master node or the control plane and the second as a worker node.
+Install kubeadm
+	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
 ## - Access the containernet container and create a new python file
 	sudo docker exec -it containernet bash
 	
