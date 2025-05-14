@@ -47,9 +47,17 @@ Activate the following applications :
 ## - Create a custom ubuntu vm image using the Dockerfile
 	sudo docker build -t ubuntuvm .
 
-## - Create two vms for kubernetes
-Create two vms one as a master node or the control plane and the second as a worker node and install kubeadm
+## - Create two vms for Kubernetes
+Create two vms one as a master node or the control plane and the second as a worker node and install Kubeadm
 	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+## - Deploy services in Kubernetes
+After installing and running kubeadm create three yaml files in the master node for: http, samba and mysql (The files are provided in the repositry). And then run the follwing commands:
+	`kubectl apply -f http.yaml`
+ 	`kubectl apply -f mysql.yaml`
+  	`kubectl apply -f samba.yaml`
+Check if the services are running and their ports by typing:
+	`kubectl get svc`
 
 ## - Access the containernet container and create a new python file
 	sudo docker exec -it containernet bash
