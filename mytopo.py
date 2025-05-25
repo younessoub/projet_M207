@@ -22,7 +22,7 @@ c1 = RemoteController( 'c1' , ip=socket.gethostbyname("onos"), port=6633)
 net.addController(c1)
 
 info('*** Adding gateway container\n')
-gateway = net.addDocker('gateway', ip='192.168.1.1', mac='00:00:00:00:00:01', dimage="ubuntuvm")
+gateway = net.addDocker('gateway', ip='192.168.1.1', mac='00:00:00:00:00:01', dimage="gateway")
 
 info('*** Adding docker containers\n')
 h1 = net.addDocker('h1', ip='192.168.10.1', mac='9a:d8:73:d8:90:6a', dimage="ubuntu:trusty")
