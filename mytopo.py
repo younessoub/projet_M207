@@ -22,13 +22,13 @@ c1 = RemoteController( 'c1' , ip=socket.gethostbyname("onos"), port=6633)
 net.addController(c1)
 
 info('*** Adding gateway container\n')
-gateway = net.addDocker('gateway', ip='192.168.1.1', mac='00:00:00:00:00:01', dimage="gateway")
+gateway = net.addDocker('gateway', ip='10.10.1.1', mac='00:00:00:00:00:01', dimage="gateway")
 
 info('*** Adding docker containers\n')
-h1 = net.addDocker('h1', ip='192.168.10.1', mac='9a:d8:73:d8:90:6a', dimage="ubuntu:trusty")
+h1 = net.addDocker('h1', ip='10.10.10.1', mac='9a:d8:73:d8:90:6a', dimage="ubuntu:trusty")
 info('*** Adding hosts\n')
-h2 = net.addHost('h2',  ip='192.168.20.1', mac='9a:d8:73:d8:90:6b')
-h3 = net.addHost('h3',  ip='192.168.20.2', mac='9a:d8:73:d8:90:6c')
+h2 = net.addHost('h2',  ip='10.10.20.1', mac='9a:d8:73:d8:90:6b')
+h3 = net.addHost('h3',  ip='10.10.20.2', mac='9a:d8:73:d8:90:6c')
 
 info('*** Adding switches\n')
 s1 = net.addSwitch('s1')
@@ -70,8 +70,10 @@ net.start()
 gateway.cmd("iptables --table nat -A POSTROUTING -o eth0 -j MASQUERADE")
 gateway.cmd("echo 1 > /proc/sys/net/ipv4/ip_forward")
 
-h2.cmd("ip route add default via 192.168.1.1")
-h3.cmd("ip route add default via 192.168.1.1")
+
+h1.cmd("ip route add default via 10.10.1.1")
+h2.cmd("ip route add default via 10.10.1.1")
+h3.cmd("ip route add default via 10.10.1.1")
 
 info('*** Running CLI\n')
 CLI(net)
