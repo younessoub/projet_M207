@@ -1,13 +1,15 @@
-## - Ubuntu Vm
+## - Linux Vm
 
-Create ubuntu vm and run 
+Create a linux vm (lets call it vm1) and run 
 	sudo apt update && sudo apt upgrade -y 
 
 ## - Clone the repositry
+in vm1 run:
 
 	git clone https://github.com/younessoub/projet_M207.git
 
 ## - Install docker
+in vm1 install docker :
 
 	https://docs.docker.com/engine/install/ubuntu/
 	
