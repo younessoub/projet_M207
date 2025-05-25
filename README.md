@@ -54,11 +54,9 @@ Activate the following applications :
 	Reactive Forwarding (org.onosproject.fwd)
 
 
-## - Create a custom ubuntu vm image using the Dockerfile
-	sudo docker build -t ubuntuvm .
 
 ## - Create two vms for Kubernetes
-Create two vms one as a master node or the control plane (vm2) and the second as a worker node (vm3) and install Kubeadm
+Create two vms one as a master node (vm2) and the second as a worker node (vm3) and install Kubeadm
 	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 ## - Deploy services in Kubernetes
