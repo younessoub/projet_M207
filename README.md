@@ -86,4 +86,4 @@ in vm1 run:
 copy and paste mytopo.py file from the repositry and run :
 	
 	mn -c
-	python mytopo.py	
+	mn --custom mytopo.py	
