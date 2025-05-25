@@ -14,19 +14,27 @@ in vm1 install docker :
 	https://docs.docker.com/engine/install/ubuntu/
 	
 ## - Pull Onos Image 
+in vm1 run:
+
 	sudo docker pull onosproject/onos
 
 ## - Pull Containernet Image
-	sudo  docker pull containernet/containernet
+in vm1 run:
+
+	sudo  docker pull containernet/containernet:v1
 
 ## - Change Directory to our project
+in vm1 run:
+
 	cd projet_M207
 	    
 ## - Run docker-compose.yaml file
-	docker compose up
+in vm1 run :
+
+	sudo docker compose up -d
 
 ## - Access Onos web GUI
-http://localhost:8181/onos/ui/
+http://<vm1-ip-address>:8181/onos/ui/
 Username : onos, Password : rocks
 
 ## - Activate applications in onos
@@ -50,7 +58,7 @@ Activate the following applications :
 	sudo docker build -t ubuntuvm .
 
 ## - Create two vms for Kubernetes
-Create two vms one as a master node or the control plane and the second as a worker node and install Kubeadm
+Create two vms one as a master node or the control plane (vm2) and the second as a worker node (vm3) and install Kubeadm
 	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 ## - Deploy services in Kubernetes
@@ -62,9 +70,9 @@ Check if the services are running and their ports by typing:
 	`kubectl get svc`
 
 ## - Access the containernet container and create a new python file
+in vm1 run:
+
 	sudo docker exec -it containernet bash
-	
-	touch mytopo.py
 	
 	apt install nano
 	
