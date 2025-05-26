@@ -1,6 +1,7 @@
 Master Node:
 
 1 - sudo swapoff -a
+  - comment swap line in /etc/fstab
 
 2 - Install Docker engine https://docs.docker.com/engine/install/ubuntu/
 
@@ -58,6 +59,7 @@ Master Node:
 Worker Node:
 
 1 - sudo swapoff -a
+  - comment swap line in /etc/fstab
 
 2 - Install Docker engine https://docs.docker.com/engine/install/ubuntu/
 

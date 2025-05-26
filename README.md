@@ -72,7 +72,7 @@ Activate the following applications :
 
 	Reactive Forwarding (org.onosproject.fwd)
 
-  	Access Control Lists (org.onosproject.acl)
+	Access Control Lists (org.onosproject.acl)
 
 
 
@@ -89,3 +89,24 @@ copy and paste mytopo.py file from the repositry and run :
 	
 	mn -c
 	mn --custom mytopo.py	
+
+## - Prevent Hosts from accessing the internet but allow accessing the other hosts
+
+in vm1 run :
+	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
+	"srcIp": "10.10.0.0/16",
+	"dstIp": "10.10.0.0/16",
+	"action": "ALLOW"
+	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+#
+	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
+	"srcIp": "10.10.0.0/16",
+	"dstIp": "<your-vm-lan-network-address>/16",
+	"action": "ALLOW"
+	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+#
+	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{ 
+	"srcIp": "10.10.0.0/16",
+	"action": "DENY"
+	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+
