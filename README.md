@@ -36,7 +36,7 @@ in vm1 run :
 	sudo docker build -t gateway .
 
  ## - Create two vms for Kubernetes
-Create two vms one as a master node (vm2) and the second as a worker node (vm3) and install Kubeadm
+Create two vms one as a master node (vm2) and the second as a worker node (vm3) and install Kubeadm by following the kubeadm_install.txt file in the repositry or by following the documentation
 	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
 
 ## - Deploy services in Kubernetes
@@ -71,6 +71,8 @@ Activate the following applications :
 	Host Location Provider (org.onosproject.hostprovider)
 
 	Reactive Forwarding (org.onosproject.fwd)
+
+  	Access Control Lists (org.onosproject.acl)
 
 
 
