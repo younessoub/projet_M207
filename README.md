@@ -93,6 +93,7 @@ copy and paste mytopo.py file from the repositry and run :
 ## - Prevent Hosts from accessing the internet but allow accessing the other hosts
 
 in vm1 run :
+
 	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
 	"srcIp": "10.10.0.0/16",
 	"dstIp": "10.10.0.0/16",
@@ -110,3 +111,35 @@ in vm1 run :
 	"action": "DENY"
 	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
 
+
+## Creating a databases in kubernetes
+
+We will create two databases "db1" and "db2" in kubernetes mysql service, "db1" can be accessed by user1 only and db2 can be accessed by user2 and user3.
+
+First we need to connect to our mysql server using the follwing command:
+	
+	mysql -h <master-node-ip> -P <service-port> -u root -p
+
+You can get the service port by running ```kubectl get svc ``` in the master node
+the password is speciefied in mysql.yml file : 'rootpass'
+
+Lets create two databases:
+
+	create database db1;
+	create database db2;
+
+Lets create our users for each host:
+
+	CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
+	CREATE USER 'user2'@'%' IDENTIFIED BY 'password2';
+	CREATE USER 'user3'@'%' IDENTIFIED BY 'password3';
+
+Lets grant access accordingly:
+
+	GRANT ALL PRIVILEGES ON db1.* TO 'user1'@'%';
+	GRANT ALL PRIVILEGES ON db2.* TO 'user2'@'%';
+	GRANT ALL PRIVILEGES ON db2.* TO 'user3'@'%';
+
+Finally:
+
+	FLUSH PRIVILEGES;
