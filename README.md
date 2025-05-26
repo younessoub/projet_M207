@@ -2,7 +2,7 @@
 
 ![topology](./topology.jpeg)
 
-we will use three vms for this topology called vm1, vm2 and vm3
+we will use three virtual machines for this topology called vm1, vm2 and vm3
 
 ## - Linux Vm
 
