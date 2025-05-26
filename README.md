@@ -53,7 +53,7 @@ in vm1 run :
 	sudo docker compose up -d
 
 ## - Access Onos web GUI
-http://<vm1-ip-address>:8181/onos/ui/
+	http://<vm1-ip-address>:8181/onos/ui/
 Username : onos, Password : rocks
 
 ## - Activate applications in onos
