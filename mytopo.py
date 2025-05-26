@@ -71,6 +71,7 @@ gateway.cmd("iptables --table nat -A POSTROUTING -o eth0 -j MASQUERADE")
 gateway.cmd("echo 1 > /proc/sys/net/ipv4/ip_forward")
 
 
+h1.cmd("ip route del default")
 h1.cmd("ip route add default via 10.10.1.1")
 h2.cmd("ip route add default via 10.10.1.1")
 h3.cmd("ip route add default via 10.10.1.1")
