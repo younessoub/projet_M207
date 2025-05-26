@@ -90,6 +90,16 @@ copy and paste mytopo.py file from the repositry and run :
 	mn -c
 	mn --custom mytopo.py	
 
+
+## - Install glpi service in vm1 
+
+install and configure glpi in vm1 as a docker container:
+
+	cd glpi
+
+	docker compose up -d
+
+
 ## - Prevent Hosts from accessing the internet but allow accessing the other hosts
 
 in vm1 run :
@@ -112,9 +122,9 @@ in vm1 run :
 	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
 
 
-## Creating a databases in kubernetes
+## Creating databases in kubernetes
 
-We will create two databases "db1" and "db2" in kubernetes mysql service, "db1" can be accessed by user1 only and db2 can be accessed by user2 and user3.
+We will create two databases "db1" and "db2" in kubernetes mysql service, "db1" can be accessed by user1 only, and db2 can be accessed by user2 and user3.
 
 First we need to connect to our mysql server using the follwing command:
 	

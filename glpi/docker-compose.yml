@@ -1,0 +1,20 @@
+services:
+#MariaDB Container
+  mariadb:
+    image: mariadb:10.7
+    container_name: mariadb
+    hostname: mariadb
+    env_file:
+      - ./mariadb.env
+    restart: unless-stopped
+
+#GLPI Container
+  glpi:
+    image: diouxx/glpi
+    container_name : glpi
+    hostname: glpi
+    ports:
+      - "80:80"
+    environment:
+      - TIMEZONE=Europe/Brussels
+    restart: unless-stopped
