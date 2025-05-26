@@ -1,3 +1,9 @@
+## Topology
+
+![topology](./topology.jpeg)
+
+we will use three vms for this topology called vm1, vm2 and vm3
+
 ## - Linux Vm
 
 Create a linux vm (lets call it vm1) and run 
@@ -97,7 +103,7 @@ install and configure glpi in vm1 as a docker container:
 
 	cd glpi
 
-	docker compose up -d
+	sudo docker compose up -d
 
 
 ## - Prevent Hosts from accessing the internet but allow accessing the other hosts
