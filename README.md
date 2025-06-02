@@ -1,161 +1,214 @@
-## Topology
+# 📍 Project Topology
 
-![topology](./topology.jpeg)
+![Topology Diagram](./topology.jpeg)
 
-we will use three virtual machines for this topology called vm1, vm2 and vm3
+This project uses **three virtual machines**:
 
-## - Linux Vm
+* `vm1`: Linux VM hosting Docker, ONOS, Containernet, and GLPI.
+* `vm2`: Kubernetes master node.
+* `vm3`: Kubernetes worker node.
 
-Create a linux vm (lets call it vm1) and run 
-	sudo apt update && sudo apt upgrade -y 
+---
 
-## - Clone the repositry
-in vm1 run:
+## 🗅️ 1. Setup VM1 (Linux VM)
 
-	git clone https://github.com/younessoub/projet_M207.git
+### ✅ Update System Packages
 
-## - Install docker
-in vm1 install docker :
+```bash
+sudo apt update && sudo apt upgrade -y
+```
 
-	https://docs.docker.com/engine/install/ubuntu/
-	
-## - Pull Onos Image 
-in vm1 run:
+### 🔁 Clone the Repository
 
-	sudo docker pull onosproject/onos
+```bash
+git clone https://github.com/younessoub/projet_M207.git
+cd projet_M207
+```
 
-## - Pull Containernet Image
-in vm1 run:
+### 🐳 Install Docker
 
-	sudo  docker pull containernet/containernet:v1
+Follow the official Docker installation guide for Ubuntu:
+👉 [Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
+### 📦 Pull Docker Images
 
- 
-## - Change Directory to our project
-in vm1 run:
+```bash
+sudo docker pull onosproject/onos
+sudo docker pull containernet/containernet:v1
+```
 
-	cd projet_M207
+### 🛠️ Build Custom Gateway Image
 
- ## - Create a custom ubuntu vm image acting as a gateway using the Dockerfile
-in vm1 run :
+```bash
+sudo docker build -t gateway .
+```
 
-	sudo docker build -t gateway .
+---
 
- ## - Create two vms for Kubernetes
-Create two vms one as a master node (vm2) and the second as a worker node (vm3) and install Kubeadm by following the kubeadm_install.txt file in the repositry or by following the documentation
-	https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+## ⚘️ 2. Setup Kubernetes (VM2 + VM3)
 
-## - Deploy services in Kubernetes
-After installing and running kubeadm create three yaml files in the master node for: http, samba and mysql (The files are provided in the repositry). And then run the follwing commands in vm1:
-	`kubectl apply -f http.yaml`
- 	`kubectl apply -f mysql.yaml`
-  	`kubectl apply -f samba.yaml`
-Check if the services are running and their ports by typing:
-	`kubectl get svc`
-	    
-## - Run docker-compose.yaml file
-in vm1 run :
+### 🧰 Install Kubeadm
 
-	sudo docker compose up -d
+Create two new VMs:
 
-## - Access Onos web GUI
-	http://<vm1-ip-address>:8181/onos/ui/
-Username : onos, Password : rocks
+* `vm2`: Kubernetes **master node**
+* `vm3`: Kubernetes **worker node**
 
-## - Activate applications in onos
-	
-In onos web gui go to the main menu -> Applications
-	
-Activate the following applications : 
+Install Kubernetes using the instructions in `kubeadm_install.txt` in the repository or follow the official guide:
+👉 [Install Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
-	OpenFlow Base Provider (org.onosproject.openflow-base)  
+---
 
-	Proxy ARP/NDP (org.onosproject.proxyarp)
+## 🚀 3. Deploy Kubernetes Services
 
-	LLDP Link Provider (org.onosproject.lldpprovider)
+On the **master node (vm2)**, create and apply the following YAML files (available in the repo):
 
-	Host Location Provider (org.onosproject.hostprovider)
+```bash
+kubectl apply -f http.yaml
+kubectl apply -f mysql.yaml
+kubectl apply -f samba.yaml
+```
 
-	Reactive Forwarding (org.onosproject.fwd)
+Check service status and ports:
 
-	Access Control Lists (org.onosproject.acl)
+```bash
+kubectl get svc
+```
 
+---
 
+## 🧩️ 4. Run Docker Compose (ONOS + Others)
 
-## - Access the containernet container in vm1 and create a new python file
-in vm1 run:
+On `vm1`, run:
 
-	sudo docker exec -it containernet bash
-	
-	apt install nano
-	
-	nano mytopo.py
+```bash
+sudo docker compose up -d
+```
 
-copy and paste mytopo.py file from the repositry and run :
-	
-	mn -c
-	mn --custom mytopo.py	
+---
 
+## 🌐 5. Access ONOS Web GUI
 
-## - Install glpi service in vm1 
+Open in browser:
+`http://<vm1-ip>:8181/onos/ui/`
 
-install and configure glpi in vm1 as a docker container:
+* **Username:** `onos`
+* **Password:** `rocks`
 
-	cd glpi
+---
 
-	sudo docker compose up -d
+## ⚙️ 6. Activate ONOS Applications
 
+From the ONOS UI:
+Go to **Main Menu → Applications** and activate the following:
 
-## - Prevent Hosts from accessing the internet but allow accessing the other hosts
+* OpenFlow Base Provider (`org.onosproject.openflow-base`)
+* Proxy ARP/NDP (`org.onosproject.proxyarp`)
+* LLDP Link Provider (`org.onosproject.lldpprovider`)
+* Host Location Provider (`org.onosproject.hostprovider`)
+* Reactive Forwarding (`org.onosproject.fwd`)
+* Access Control Lists (`org.onosproject.acl`)
 
-in vm1 run :
+---
 
-	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
-	"srcIp": "10.10.0.0/16",
-	"dstIp": "10.10.0.0/16",
-	"action": "ALLOW"
-	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
-#
-	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
-	"srcIp": "10.10.0.0/16",
-	"dstIp": "<your-vm-lan-network-address>/16",
-	"action": "ALLOW"
-	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
-#
-	curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{ 
-	"srcIp": "10.10.0.0/16",
-	"action": "DENY"
-	}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+## 🥪 7. Use Containernet for Custom Topology
 
+On `vm1`:
 
-## Creating databases in kubernetes
+```bash
+sudo docker exec -it containernet bash
+apt install nano
+nano mytopo.py
+```
 
-We will create two databases "db1" and "db2" in kubernetes mysql service, "db1" can be accessed by user1 only, and db2 can be accessed by user2 and user3.
+Copy the content of `mytopo.py` from the repository.
 
-First we need to connect to our mysql server using the follwing command:
-	
-	mysql -h <master-node-ip> -P <service-port> -u root -p
+Run the topology:
 
-You can get the service port by running ```kubectl get svc ``` in the master node
-the password is speciefied in mysql.yml file : 'rootpass'
+```bash
+mn -c
+mn --custom mytopo.py
+```
 
-Lets create two databases:
+---
 
-	create database db1;
-	create database db2;
+## 📋 8. Install GLPI as a Docker Service
 
-Lets create our users for each host:
+On `vm1`:
 
-	CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
-	CREATE USER 'user2'@'%' IDENTIFIED BY 'password2';
-	CREATE USER 'user3'@'%' IDENTIFIED BY 'password3';
+```bash
+cd glpi
+sudo docker compose up -d
+```
 
-Lets grant access accordingly:
+---
 
-	GRANT ALL PRIVILEGES ON db1.* TO 'user1'@'%';
-	GRANT ALL PRIVILEGES ON db2.* TO 'user2'@'%';
-	GRANT ALL PRIVILEGES ON db2.* TO 'user3'@'%';
+## 🔒 9. Configure ONOS ACL: Allow Internal Traffic Only
 
-Finally:
+Replace `<vm1-ip-address>` and `<your-vm-lan-network-address>` accordingly.
 
-	FLUSH PRIVILEGES;
+```bash
+# Allow communication within the 10.10.0.0/16 subnet
+curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
+  "srcIp": "10.10.0.0/16",
+  "dstIp": "10.10.0.0/16",
+  "action": "ALLOW"
+}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+
+# Allow access to the LAN
+curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
+  "srcIp": "10.10.0.0/16",
+  "dstIp": "<your-vm-lan-network-address>/16",
+  "action": "ALLOW"
+}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+
+# Deny internet access
+curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
+  "srcIp": "10.10.0.0/16",
+  "action": "DENY"
+}' http://<vm1-ip-address>:8181/onos/v1/acl/rules
+```
+
+---
+
+## 📃 10. Create Databases in Kubernetes MySQL Service
+
+Connect to the MySQL service from `vm2`:
+
+```bash
+mysql -h <master-node-ip> -P <service-port> -u root -p
+```
+
+Password: `rootpass` (check `mysql.yaml`)
+
+### 🔧 Create Databases
+
+```sql
+CREATE DATABASE db1;
+CREATE DATABASE db2;
+```
+
+### 👥 Create Users
+
+```sql
+CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
+CREATE USER 'user2'@'%' IDENTIFIED BY 'password2';
+CREATE USER 'user3'@'%' IDENTIFIED BY 'password3';
+```
+
+### 🔐 Grant Permissions
+
+```sql
+GRANT ALL PRIVILEGES ON db1.* TO 'user1'@'%';
+GRANT ALL PRIVILEGES ON db2.* TO 'user2'@'%';
+GRANT ALL PRIVILEGES ON db2.* TO 'user3'@'%';
+FLUSH PRIVILEGES;
+```
+
+---
+
+## ✅ Final Notes
+
+* Ensure each VM has proper networking to communicate.
+* Use `kubectl get nodes` to verify Kubernetes cluster status.
+* Use `docker ps` to verify running containers on `vm1`.
