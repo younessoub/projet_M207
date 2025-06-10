@@ -1,23 +1,23 @@
-version: '3.3'
+version: '3.3'                  # Compose file format version 3.3
 
 services:
   onos:
-    image: onosproject/onos:latest
-    restart: unless-stopped
+    image: onosproject/onos:latest   # Use the latest ONOS (Open Network Operating System) image
+    restart: unless-stopped           # Restart the container unless it is explicitly stopped
     ports:
-      - "8181:8181"
-      - "6633:6633"
-      - "6653:6653"
-    container_name: onos
+      - "8181:8181"                  # Map host port 8181 to container port 8181 (ONOS REST API/Web UI)
+      - "6633:6633"                  # Map host port 6633 to container port 6633 (OpenFlow 1.0 port)
+      - "6653:6653"                  # Map host port 6653 to container port 6653 (OpenFlow 1.3 port)
+    container_name: onos             # Set the container name to "onos"
 
   containernet: 
     depends_on: 
-      - onos
-    image: containernet/containernet:v1
-    restart: unless-stopped
+      - onos                       # Ensure 'onos' service starts before this container
+    image: containernet/containernet:v1  # Use Containernet image version v1 (a Docker-based Mininet alternative)
+    restart: unless-stopped         # Restart unless explicitly stopped
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"      
-    privileged: true
-    pid: host
-    tty: true
-    container_name: containernet
+      - "/var/run/docker.sock:/var/run/docker.sock"  # Mount Docker socket for Containernet to control Docker
+    privileged: true                # Run container with elevated privileges (required for network emulation)
+    pid: host                      # Share the host’s process ID namespace
+    tty: true                     # Allocate a pseudo-TTY (interactive terminal)
+    container_name: containernet   # Set container name to "containernet"
