@@ -1,6 +1,6 @@
 # 📍 Project Topology
 
-![Topology Diagram](./topologie_2.jpeg)
+![Topology Diagram](./topologie_1.jpeg)
 
 This project uses **three virtual machines**:
 
