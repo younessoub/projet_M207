@@ -1,31 +1,47 @@
-# Introduction
-This project demonstrates the practical implementation of Software-Defined Networking (SDN) concepts using a hybrid infrastructure composed of Docker, ONOS, Kubernetes, and Containernet. SDN decouples the control plane from the data plane in networking, enabling centralized, programmable network control.
+# 📘 SDN Project with Containernet, ONOS, Kubernetes & GLPI
 
-By deploying SDN with the ONOS controller and Containernet for emulated topologies, this project offers a hands-on environment for understanding dynamic network management, traffic flow control, and access control. Additionally, the use of Kubernetes for service orchestration and GLPI for IT asset management showcases an integrated approach to systems and network administration.
+## 🧠 Introduction
 
-The setup is distributed across three virtual machines and is ideal for IT students, educators, and professionals looking to simulate and manage a full-featured network and system infrastructure.
+This project provides a comprehensive, hands-on implementation of **Software-Defined Networking (SDN)** using a hybrid infrastructure that combines **Containernet**, **ONOS controller**, **Kubernetes**, **Docker**, and **GLPI**. It demonstrates how SDN can simplify and enhance network management by decoupling the control plane from the data plane, allowing for centralized and programmable network control.
 
-# 📍 Project Topology
+In this environment:
 
-![Topology Diagram](./topo.jpeg)
+* **ONOS** serves as the SDN controller.
+* **Containernet** is used for network emulation.
+* **Kubernetes** orchestrates service deployment.
+* **GLPI** manages IT assets.
 
-This project uses **three virtual machines**:
-
-* `vm1`: Linux VM hosting Docker, ONOS, Containernet, and GLPI.
-* `vm2`: Kubernetes master node.
-* `vm3`: Kubernetes worker node.
+This setup is ideal for **IT students**, **network engineers**, and **educators** seeking a simulated yet realistic lab environment.
 
 ---
 
-## 🗅️ 1. Setup VM1 (Linux VM)
+## 🗺️ Project Topology
+
+![Topology Diagram](./topologie_1.jpeg)
+
+The infrastructure consists of **three Virtual Machines (VMs)**:
+
+| VM    | Role                                        | IP Address          |
+| ----- | ------------------------------------------- | ------------------- |
+| `vm1` | Linux VM (Docker, ONOS, Containernet, GLPI) | `192.168.100.30/24` |
+| `vm2` | Kubernetes Master Node                      | `192.168.100.31/24` |
+| `vm3` | Kubernetes Worker Node                      | `192.168.100.32/24` |
+
+---
+
+## ⚙️ Step 1: Setup `vm1` (Linux Base)
 
 ### ✅ Update System Packages
+
+Update the base system to ensure all packages are up to date.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
 ### 🔁 Clone the Repository
+
+Get the project files from GitHub:
 
 ```bash
 git clone https://github.com/younessoub/projet_M207.git
@@ -34,10 +50,12 @@ cd projet_M207
 
 ### 🐳 Install Docker
 
-Follow the official Docker installation guide for Ubuntu:
-👉 [Docker Engine on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+Follow the official Docker installation instructions:
+👉 [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
-### 📦 Pull Docker Images
+### 📦 Pull Required Docker Images
+
+Pull necessary images for ONOS and Containernet:
 
 ```bash
 sudo docker pull onosproject/onos
@@ -46,29 +64,29 @@ sudo docker pull containernet/containernet:v1
 
 ### 🛠️ Build Custom Gateway Image
 
+Build a custom Docker image for the network gateway (defined in the Dockerfile):
+
 ```bash
 sudo docker build -t gateway .
 ```
 
 ---
 
-## ⚘️ 2. Setup Kubernetes (VM2 + VM3)
+## ☸️ Step 2: Setup Kubernetes (`vm2` + `vm3`)
 
-### 🧰 Install Kubeadm
+### 🔧 Install Kubeadm on Both VMs
 
-Create two new VMs:
+Install Kubernetes components (`kubeadm`, `kubelet`, `kubectl`) using either the included `kubeadm_install.txt` guide or:
+👉 [Official Kubeadm Installation Guide](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
-* `vm2`: Kubernetes **master node**
-* `vm3`: Kubernetes **worker node**
-
-Install Kubernetes using the instructions in `kubeadm_install.txt` in the repository or follow the official guide:
-👉 [Install Kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+* `vm2`: will be initialized as the **master node**.
+* `vm3`: will join as a **worker node**.
 
 ---
 
-## 🚀 3. Deploy Kubernetes Services
+## 🚀 Step 3: Deploy Services on Kubernetes
 
-On the **master node (vm2)**, create and apply the following YAML files (available in the repo):
+On the **master node (vm2)**, apply the YAML service manifests provided in the repository:
 
 ```bash
 kubectl apply -f http.yaml
@@ -76,7 +94,9 @@ kubectl apply -f mysql.yaml
 kubectl apply -f samba.yaml
 ```
 
-Check service status and ports:
+### 🔍 Verify Deployment
+
+Check if services are running:
 
 ```bash
 kubectl get svc
@@ -84,9 +104,9 @@ kubectl get svc
 
 ---
 
-## 🧩️ 4. Run Docker Compose (ONOS + Others)
+## 🧩 Step 4: Launch ONOS and Other Docker Services on `vm1`
 
-On `vm1`, run:
+Use Docker Compose to start services defined in `docker-compose.yml`:
 
 ```bash
 sudo docker compose up -d
@@ -94,43 +114,57 @@ sudo docker compose up -d
 
 ---
 
-## 🌐 5. Access ONOS Web GUI
+## 🌐 Step 5: Access ONOS Web UI
 
-Open in browser:
-`http://<vm1-ip>:8181/onos/ui/`
+Open your browser and navigate to:
 
-* **Username:** `onos`
-* **Password:** `rocks`
+```
+http://192.168.100.30:8181/onos/ui/
+```
 
----
+**Login credentials:**
 
-## ⚙️ 6. Activate ONOS Applications
-
-From the ONOS UI:
-Go to **Main Menu → Applications** and activate the following:
-
-* OpenFlow Base Provider (`org.onosproject.openflow-base`)
-* Proxy ARP/NDP (`org.onosproject.proxyarp`)
-* LLDP Link Provider (`org.onosproject.lldpprovider`)
-* Host Location Provider (`org.onosproject.hostprovider`)
-* Reactive Forwarding (`org.onosproject.fwd`)
-* Access Control Lists (`org.onosproject.acl`)
+* Username: `onos`
+* Password: `rocks`
 
 ---
 
-## 🥪 7. Use Containernet for Custom Topology
+## ⚙️ Step 6: Activate ONOS Core Applications
 
-On `vm1`:
+From the ONOS Web UI, go to **Main Menu → Applications** and activate:
+
+* `org.onosproject.openflow-base` (OpenFlow Base Provider)
+* `org.onosproject.proxyarp` (Proxy ARP/NDP)
+* `org.onosproject.lldpprovider` (LLDP Link Provider)
+* `org.onosproject.hostprovider` (Host Location Provider)
+* `org.onosproject.fwd` (Reactive Forwarding)
+* `org.onosproject.acl` (Access Control Lists)
+
+These applications enable traffic discovery, host tracking, link detection, and ACL enforcement.
+
+---
+
+## 🏗️ Step 7: Use Containernet for Network Topology
+
+On `vm1`, access the Containernet container:
 
 ```bash
 sudo docker exec -it containernet bash
+```
+
+Install a text editor:
+
+```bash
 apt install nano
+```
+
+Create or modify your topology file:
+
+```bash
 nano mytopo.py
 ```
 
-Copy the content of `mytopo.py` from the repository.
-
-Run the topology:
+Paste your custom topology from the repository and run:
 
 ```bash
 mn -c
@@ -139,30 +173,33 @@ mn --custom mytopo.py
 
 ---
 
-## 📋 8. Install GLPI as a Docker Service
+## 🧰 Step 8: Deploy GLPI IT Management Tool
 
-On `vm1`:
+On `vm1`, move to the GLPI directory and use Docker Compose:
 
 ```bash
 cd glpi
 sudo docker compose up -d
 ```
 
+This brings up GLPI as a web-accessible containerized service for managing IT inventory.
+
 ---
 
-## 🔒 9. Configure ONOS ACL: Allow Internal Traffic Only
+## 🔐 Step 9: Configure ONOS ACL Rules
 
-Replace `<vm1-ip-address>` and `<your-vm-lan-network-address>` accordingly.
+Use ONOS's REST API to enforce access policies.
+Replace `<vm1-ip-address>` and `<your-vm-lan-network-address>` with appropriate values:
 
 ```bash
-# Allow communication within the 10.10.0.0/16 subnet
+# Allow internal subnet communication
 curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
   "srcIp": "10.10.0.0/16",
   "dstIp": "10.10.0.0/16",
   "action": "ALLOW"
 }' http://<vm1-ip-address>:8181/onos/v1/acl/rules
 
-# Allow access to the LAN
+# Allow access to LAN
 curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
   "srcIp": "10.10.0.0/16",
   "dstIp": "<your-vm-lan-network-address>/16",
@@ -176,17 +213,19 @@ curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
 }' http://<vm1-ip-address>:8181/onos/v1/acl/rules
 ```
 
+These rules restrict external internet access while allowing internal and LAN communication.
+
 ---
 
-## 📃 10. Create Databases in Kubernetes MySQL Service
+## 🗃️ Step 10: Create Databases in MySQL (Kubernetes Service)
 
-Connect to the MySQL service from `vm2`:
+Connect to the MySQL service running in the Kubernetes cluster from `vm2`:
 
 ```bash
 mysql -h <master-node-ip> -P <service-port> -u root -p
 ```
 
-Password: `rootpass` (check `mysql.yaml`)
+Password: `rootpass` (defined in `mysql.yaml`)
 
 ### 🔧 Create Databases
 
@@ -195,7 +234,7 @@ CREATE DATABASE db1;
 CREATE DATABASE db2;
 ```
 
-### 👥 Create Users
+### 👤 Create Users
 
 ```sql
 CREATE USER 'user1'@'%' IDENTIFIED BY 'password1';
@@ -203,7 +242,7 @@ CREATE USER 'user2'@'%' IDENTIFIED BY 'password2';
 CREATE USER 'user3'@'%' IDENTIFIED BY 'password3';
 ```
 
-### 🔐 Grant Permissions
+### 🔐 Grant Privileges
 
 ```sql
 GRANT ALL PRIVILEGES ON db1.* TO 'user1'@'%';
@@ -214,8 +253,21 @@ FLUSH PRIVILEGES;
 
 ---
 
-## ✅ Final Notes
+## ✅ Final Checklist & Tips
 
-* Ensure each VM has proper networking to communicate.
+* Ensure all VMs can communicate over the same network.
 * Use `kubectl get nodes` to verify Kubernetes cluster status.
-* Use `docker ps` to verify running containers on `vm1`.
+* Use `docker ps` on `vm1` to confirm running containers.
+* Restart any service using `docker restart <container_id>` or `kubectl rollout restart` if needed.
+* Make backups of important YAML and configuration files.
+
+---
+
+## 📚 Resources
+
+* [ONOS Documentation](https://wiki.onosproject.org/)
+* [Containernet GitHub](https://github.com/containernet/containernet)
+* [Kubernetes Docs](https://kubernetes.io/docs/)
+* [GLPI Project](https://glpi-project.org/)
+
+---
