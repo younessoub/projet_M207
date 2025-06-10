@@ -17,7 +17,7 @@ This setup is ideal for **IT students**, **network engineers**, and **educators*
 
 ## 🗺️ Project Topology
 
-![Topology Diagram](./topologie_1.jpeg)
+![Topology Diagram](./topo.jpeg)
 
 The infrastructure consists of **three Virtual Machines (VMs)**:
 
