@@ -1,3 +1,10 @@
+# Introduction
+This project demonstrates the practical implementation of Software-Defined Networking (SDN) concepts using a hybrid infrastructure composed of Docker, ONOS, Kubernetes, and Containernet. SDN decouples the control plane from the data plane in networking, enabling centralized, programmable network control.
+
+By deploying SDN with the ONOS controller and Containernet for emulated topologies, this project offers a hands-on environment for understanding dynamic network management, traffic flow control, and access control. Additionally, the use of Kubernetes for service orchestration and GLPI for IT asset management showcases an integrated approach to systems and network administration.
+
+The setup is distributed across three virtual machines and is ideal for IT students, educators, and professionals looking to simulate and manage a full-featured network and system infrastructure.
+
 # 📍 Project Topology
 
 ![Topology Diagram](./topologie_1.jpeg)
