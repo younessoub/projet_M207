@@ -1,36 +1,36 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1               # API version for Deployment resource
+kind: Deployment                 # This resource defines a Deployment to manage pods
 metadata:
-  name: mysql
+  name: mysql                   # Name of the Deployment is "mysql"
 spec:
-  replicas: 1
+  replicas: 1                   # Run 1 replica (one pod) of MySQL
   selector:
-    matchLabels:
+    matchLabels:                # Select pods with label "app: mysql"
       app: mysql
-  template:
+  template:                    # Pod template for pods managed by this Deployment
     metadata:
       labels:
-        app: mysql
+        app: mysql             # Label applied to pods so Deployment can manage them
     spec:
-      containers:
-      - name: mysql
-        image: mysql:5.7
-        env:
-        - name: MYSQL_ROOT_PASSWORD
+      containers:              # List of containers in the pod
+      - name: mysql            # Container named "mysql"
+        image: mysql:5.7       # Use MySQL official image version 5.7
+        env:                  # Environment variables for the container
+        - name: MYSQL_ROOT_PASSWORD  # Set root password for MySQL
           value: rootpass
         ports:
-        - containerPort: 3306
+        - containerPort: 3306  # Expose port 3306 (MySQL default port) inside the container
 ---
-apiVersion: v1
-kind: Service
+apiVersion: v1                  # API version for Service resource
+kind: Service                  # This resource defines a Service to expose pods
 metadata:
-  name: mysql-service
+  name: mysql-service          # Name of the Service is "mysql-service"
 spec:
-  type: NodePort
+  type: NodePort               # Service type NodePort exposes port on each Node's IP
   selector:
-    app: mysql
+    app: mysql                # Select pods with label "app: mysql" for traffic forwarding
   ports:
-  - name: mysql
-    port: 3306
-    targetPort: 3306
-    nodePort: 31306
+  - name: mysql                # Name the port "mysql"
+    port: 3306                # Expose port 3306 on the Service (cluster-internal port)
+    targetPort: 3306          # Forward traffic to port 3306 on the pod containers
+    nodePort: 31306           # External port on each Node to access the service
