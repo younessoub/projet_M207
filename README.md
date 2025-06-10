@@ -7,7 +7,7 @@ The setup is distributed across three virtual machines and is ideal for IT stude
 
 # 📍 Project Topology
 
-![Topology Diagram](./topologie_1.jpeg)
+![Topology Diagram](./topo.jpeg)
 
 This project uses **three virtual machines**:
 
