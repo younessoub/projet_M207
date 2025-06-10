@@ -1,31 +1,31 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: apps/v1                 # API version for Deployment resource
+kind: Deployment                  # This resource is a Deployment, manages pods
 metadata:
-  name: http-deployment
+  name: http-deployment           # Name of the Deployment
 spec:
-  replicas: 1
+  replicas: 1                     # Number of pod replicas to run
   selector:
-    matchLabels:
+    matchLabels:                  # Select pods with label "app: http"
       app: http
-  template:
+  template:                      # Template for the pod managed by this Deployment
     metadata:
       labels:
-        app: http
+        app: http                # Label applied to pods created by this Deployment
     spec:
-      containers:
-      - name: nginx
-        image: nginx
+      containers:                # List of containers in the pod
+      - name: nginx              # Container name
+        image: nginx             # Container image to run (nginx official image)
         ports:
-        - containerPort: 80
+        - containerPort: 80     # Expose port 80 inside the container
 ---
-apiVersion: v1
-kind: Service
+apiVersion: v1                    # API version for Service resource
+kind: Service                    # This resource is a Service, exposes pods
 metadata:
-  name: http-service
+  name: http-service             # Name of the Service
 spec:
   selector:
-    app: http
+    app: http                   # Select pods with label "app: http" to forward traffic to
   ports:
-  - port: 80
-    targetPort: 80
-  type: NodePort
+  - port: 80                   # Service port exposed to the cluster or outside
+    targetPort: 80             # Forward traffic to port 80 on the selected pods
+  type: NodePort               # Service type NodePort exposes it on each node’s IP at a static port
