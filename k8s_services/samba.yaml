@@ -1,32 +1,35 @@
-apiVersion: v1
-kind: Pod
+apiVersion: v1                     # Kubernetes API version for Pod and Service resources
+kind: Pod                         # Defines a Pod resource (single instance of a container)
 metadata:
-  name: samba
+  name: samba                    # Name of the Pod is "samba"
   labels:
-    name: samba
+    name: samba                  # Label with key "name" and value "samba" to identify this Pod
 spec:
   containers:
-  - name: samba
-    image: dperson/samba
-    args: ["-s", "public;/mount;yes;no;no;all;none"]
+  - name: samba                  # Container inside the Pod named "samba"
+    image: dperson/samba         # Use the Samba image maintained by dperson (provides SMB service)
+    args: ["-s", "public;/mount;yes;no;no;all;none"]  # Samba share config:
+                                                      # "public" share, path /mount, writable=yes,
+                                                      # guest access no, some other permissions
     ports:
-    - containerPort: 139
-    - containerPort: 445
+    - containerPort: 139         # Expose SMB port 139 inside the container (NetBIOS session service)
+    - containerPort: 445         # Expose SMB port 445 inside the container (SMB direct TCP/IP)
+
 ---
-apiVersion: v1
-kind: Service
+apiVersion: v1                   # Kubernetes API version for Service resource
+kind: Service                   # Defines a Service resource to expose the Pod(s)
 metadata:
-  name: samba-service
+  name: samba-service           # Name of the Service is "samba-service"
 spec:
-  type: NodePort
+  type: NodePort                # Service type is NodePort (exposes service on each Node’s IP at a static port)
   selector:
-    name: samba
+    name: samba                 # Selects Pods with label "name: samba" (targets the samba Pod)
   ports:
-  - name: smb139
-    port: 139
-    targetPort: 139
-    nodePort: 31390
-  - name: smb445
-    port: 445
-    targetPort: 445
-    nodePort: 31445
+  - name: smb139                # Name for port mapping 139
+    port: 139                  # Service port 139
+    targetPort: 139            # Forward traffic to container port 139
+    nodePort: 31390            # Node port 31390 exposed on all cluster nodes
+  - name: smb445                # Name for port mapping 445
+    port: 445                  # Service port 445
+    targetPort: 445            # Forward traffic to container port 445
+    nodePort: 31445            # Node port 31445 exposed on all cluster nodes
