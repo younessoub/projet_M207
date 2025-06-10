@@ -1,20 +1,20 @@
 services:
-#MariaDB Container
-  mariadb:
-    image: mariadb:10.7
-    container_name: mariadb
-    hostname: mariadb
-    env_file:
-      - ./mariadb.env
-    restart: unless-stopped
+  # MariaDB Container
+  mariadb:                         # Service name for the MariaDB database container
+    image: mariadb:10.7            # Use the official MariaDB image, version 10.7
+    container_name: mariadb        # Assign container name "mariadb" (easier to identify)
+    hostname: mariadb              # Set the hostname inside the container to "mariadb"
+    env_file:                     # Load environment variables from a file
+      - ./mariadb.env             # File containing environment variables for MariaDB
+    restart: unless-stopped        # Automatically restart the container unless manually stopped
 
-#GLPI Container
-  glpi:
-    image: diouxx/glpi
-    container_name : glpi
-    hostname: glpi
-    ports:
-      - "80:80"
-    environment:
-      - TIMEZONE=Europe/Brussels
-    restart: unless-stopped
+  # GLPI Container
+  glpi:                           # Service name for the GLPI container (IT asset management)
+    image: diouxx/glpi            # Use the GLPI image maintained by diouxx
+    container_name: glpi           # Assign container name "glpi"
+    hostname: glpi                # Set the hostname inside the container to "glpi"
+    ports:                        # Map ports between host and container
+      - "80:80"                   # Map host port 80 to container port 80 (HTTP access)
+    environment:                  # Set environment variables directly here
+      - TIMEZONE=Europe/Brussels # Set the timezone inside the container to Europe/Brussels
+    restart: unless-stopped        # Automatically restart the container unless manually stopped
