@@ -317,7 +317,7 @@ Create your topology file:
 nano mytopo.py
 ```
 
-Paste the custom topology from the repository mytopo.py file and save it and run:
+Paste the custom [topology file](./mytopo.py) from the repository  and save it and run:
 
 ```bash
 mn -c
