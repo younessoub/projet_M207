@@ -256,7 +256,7 @@ kubectl get svc
 ![get svc](./images/getsvc.JPG)
 ---
 
-## 🧩 Step 4: Launch ONOS and Other Docker Services on `vm1`
+## 🧩 Step 4: Launch ONOS and Containernet on `vm1`
 
 Use Docker Compose to start services defined in `docker-compose.yml` in vm1:
 
@@ -292,6 +292,7 @@ From the ONOS Web UI, go to **Main Menu → Applications** and activate:
 * `org.onosproject.fwd` (Reactive Forwarding)
 * `org.onosproject.acl` (Access Control Lists)
 
+![onos apps](./images/onosapps.JPG)
 These applications enable traffic discovery, host tracking, link detection, and ACL enforcement.
 
 ---
