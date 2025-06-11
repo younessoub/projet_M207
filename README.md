@@ -119,6 +119,8 @@ change "SystemdCgroup = false" to "SystemdCgroup = true"
 change "sandbox_image = "registry.k8s.io/pause:3.8" to "sandbox_image = "registry.k8s.io/pause:3.10"
 save the file and exit
 
+![containerd config](./images/toml.JPG)
+
 ```
 sudo systemctl restart containerd
 ```
