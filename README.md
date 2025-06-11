@@ -305,19 +305,19 @@ On `vm1`, access the Containernet container:
 sudo docker exec -it containernet bash
 ```
 
-Install a text editor:
+Install nano:
 
 ```bash
 apt install nano
 ```
 
-Create or modify your topology file:
+Create your topology file:
 
 ```bash
 nano mytopo.py
 ```
 
-Paste your custom topology from the repository and run:
+Paste the custom topology from the repository mytopo.py file and save it and run:
 
 ```bash
 mn -c
