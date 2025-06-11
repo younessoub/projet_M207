@@ -324,6 +324,16 @@ mn -c
 mn --custom mytopo.py
 ```
 
+in the Containernet CLI run the following command : 
+
+```
+pingall
+```
+
+if you go back to Onos GUI you should see something like this
+
+![onos topology](./images/onostopo.JPG)
+
 ---
 
 ## 🧰 Step 8: Deploy GLPI IT Management Tool
