@@ -210,9 +210,22 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 
 
 
-### 🛠For the Worker Node only :
+### 🛠  For the Worker Node only :
 
-after running "kubeadm init" in the master node run : kubeadm join
+run the "kubeadm join" line you copied earlier
+
+
+### Check if kubeadm is set successfuly
+
+To check if the kubeadm is running and the worker node has joined run the follwing command : 
+
+```
+kubectl get nodes
+```
+You should see something like this :
+
+![get nodes](nodes.JPG)
+
 
 ---
 
