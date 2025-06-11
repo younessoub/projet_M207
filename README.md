@@ -388,6 +388,18 @@ curl -u onos:rocks -X POST -H "Content-Type: application/json" -d '{
 
 These rules restrict external internet access while allowing internal and LAN communication.
 
+Make sure the ACLs are enabled by accessing the following url:
+
+http://<vm1-ip>:8181/onos/v1/acl/rules
+
+Username : onos
+password : rocks
+
+You should see something like this:
+
+[onos acls](./images/acls.JPG)
+
+
 ---
 
 ## 🗃️ Step 10: Create Databases in MySQL (Kubernetes Service)
