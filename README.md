@@ -217,7 +217,7 @@ run the "kubeadm join" line you copied earlier
 
 ### Check if kubeadm is set successfuly
 
-To check if the kubeadm is running and the worker node has joined run the follwing command : 
+To check if the kubeadm is running and the worker node has joined run the following command in the master node : 
 
 ```
 kubectl get nodes
@@ -258,7 +258,7 @@ kubectl get svc
 
 ## 🧩 Step 4: Launch ONOS and Other Docker Services on `vm1`
 
-Use Docker Compose to start services defined in `docker-compose.yml`:
+Use Docker Compose to start services defined in `docker-compose.yml` in vm1:
 
 ```bash
 sudo docker compose up -d
@@ -271,7 +271,7 @@ sudo docker compose up -d
 Open your browser and navigate to:
 
 ```
-http://192.168.100.30:8181/onos/ui/
+http://<vm1-ip>:8181/onos/ui/
 ```
 
 **Login credentials:**
