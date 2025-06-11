@@ -271,7 +271,7 @@ sudo docker compose up -d
 Open your browser and navigate to:
 
 ```
-http://<vm1-ip>:8181/onos/ui/
+http://< vm1-ip >:8181/onos/ui/
 ```
 
 **Login credentials:**
@@ -348,7 +348,7 @@ sudo docker compose up -d
 Access GLPI web UI on: 
 
 ```
- http://<vm1-ip>:80
+ http://< vm1-ip >:80
 ```
 
 And follow the steps to install glpi.
@@ -439,7 +439,7 @@ These rules restrict external internet access while allowing internal and LAN co
 
 Make sure the ACLs are enabled by accessing the following url:
 
-http://<vm1-ip>:8181/onos/v1/acl/rules
+http://< vm1-ip >:8181/onos/v1/acl/rules
 
 Username : onos
 password : rocks
