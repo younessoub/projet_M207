@@ -17,7 +17,7 @@ This setup is ideal for **IT students**, **network engineers**, and **educators*
 
 ## 🗺️ Project Topology
 
-![Topology Diagram](./topo.jpeg)
+![Topology Diagram](./images/topo.jpeg)
 
 The infrastructure consists of **three Virtual Machines (VMs)**:
 
@@ -65,7 +65,7 @@ sudo docker pull containernet/containernet:v1
 
 ### 🛠️ Build Custom Gateway Image
 
-Build a custom Docker image that will serve as a gateway for our network for using the Dockerfile in the repositry. 
+Build a custom Docker image that will serve as a gateway for our network using the Dockerfile in the repositry. 
 Before running this command make sure to cd into the repositry folder:
 ```
 cd projet_M207
@@ -82,7 +82,7 @@ sudo docker build -t gateway .
 
 ### 🔧 Install Kubeadm on Both VMs 
 
-Install Kubernetes components (`kubeadm`, `kubelet`, `kubectl`) using either the included `kubeadm_install.txt` guide or:
+Install Kubernetes components (`kubeadm`, `kubelet`, `kubectl`) using either the included `kubeadm_install.md` guide or:
 👉 [Official Kubeadm Installation Guide](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 * `vm2`: will be initialized as the **master node**.

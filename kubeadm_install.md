@@ -1,4 +1,4 @@
-Master Node:
+#For the Master Node:
 
 1 - sudo swapoff -a
   - comment swap line in /etc/fstab
@@ -56,7 +56,7 @@ Master Node:
 
 
 
-Worker Node:
+For the Worker Node:
 
 1 - sudo swapoff -a
   - comment swap line in /etc/fstab
