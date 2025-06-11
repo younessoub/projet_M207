@@ -90,12 +90,17 @@ Or you can use the following Instructions:
 
 ### For the Master Node:
 
-```sudo swapoff -a```
-	- comment swap line in /etc/fstab
+```
+sudo swapoff -a
+```
+
+comment swap line in /etc/fstab
 
 Install [Docker engine](https://docs.docker.com/engine/install/ubuntu/)
 
-```sudo chmod 646 /etc/containerd/config.toml```
+```
+sudo chmod 646 /etc/containerd/config.toml
+```
 
 ```containerd config default > /etc/containerd/config.toml```
 
