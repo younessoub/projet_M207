@@ -361,6 +361,10 @@ Lets add a user in glpi by going to Administration > Users :
 
 ![glpi add user](./images/adduserglpi.JPG)
 
+Fill the user Info : 
+
+![glpi user info](./images/userinfo.JPG)
+
 
 ---
 
