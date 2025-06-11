@@ -99,6 +99,7 @@ sudo swapoff -a
 sudo nano /etc/fstab
 ```
 comment swap line in /etc/fstab
+![Swap line](./images/swap.JPG)
 
 
 Install [Docker engine](https://docs.docker.com/engine/install/ubuntu/)
