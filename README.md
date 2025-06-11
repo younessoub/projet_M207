@@ -117,12 +117,12 @@ sudo nano /etc/containerd/config.toml
 ```
 change "SystemdCgroup = false" to "SystemdCgroup = true"
 
-![containerd config](./images/toml1.JPG)
-
+![containerd config](./images/toml2.JPG)
 
 change "sandbox_image = "registry.k8s.io/pause:3.8" to "sandbox_image = "registry.k8s.io/pause:3.10"
 
-![containerd config](./images/toml2.JPG)
+![containerd config](./images/toml1.JPG)
+
 
 save the file and exit
 
