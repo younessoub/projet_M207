@@ -397,7 +397,7 @@ password : rocks
 
 You should see something like this:
 
-[onos acls](./images/acls.JPG)
+![onos acls](./images/acls.JPG)
 
 
 ---
