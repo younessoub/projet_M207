@@ -47,12 +47,11 @@ Get the project files from GitHub:
 
 ```bash
 git clone https://github.com/younessoub/projet_M207.git
-cd projet_M207
 ```
 
 ### 🐳 Install Docker
 
-Follow the official Docker installation instructions:
+Follow the official Docker installation instructions, make sure that you follow the instructions for YOUR linux distro:
 👉 [Install Docker on Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 
 ### 📦 Pull Required Docker Images
@@ -66,7 +65,12 @@ sudo docker pull containernet/containernet:v1
 
 ### 🛠️ Build Custom Gateway Image
 
-Build a custom Docker image for the network gateway (defined in the Dockerfile):
+Build a custom Docker image that will serve as a gateway for our network for using the Dockerfile in the repositry. 
+Before running this command make sure to cd into the repositry folder:
+```
+cd projet_M207
+```
+
 
 ```bash
 sudo docker build -t gateway .
@@ -76,7 +80,7 @@ sudo docker build -t gateway .
 
 ## ☸️ Step 2: Setup Kubernetes (`vm2` + `vm3`)
 
-### 🔧 Install Kubeadm on Both VMs
+### 🔧 Install Kubeadm on Both VMs 
 
 Install Kubernetes components (`kubeadm`, `kubelet`, `kubectl`) using either the included `kubeadm_install.txt` guide or:
 👉 [Official Kubeadm Installation Guide](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
