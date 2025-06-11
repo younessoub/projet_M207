@@ -236,7 +236,7 @@ On the **master node (vm2)**, apply the YAML service manifests provided in the r
 
 Create three files: http.yaml, samba.yaml and mysql.yaml 
 
-The contents for the files is provided in the k8s_services folder
+The contents for the files is provided in the [k8s_services folder](./k8s_services)
 
 After saving them run the following commands
 
