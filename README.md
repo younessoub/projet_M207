@@ -162,6 +162,26 @@ sudo apt-mark hold kubelet kubeadm kubectl
 ```
 sudo systemctl enable --now kubelet
 ```
+```
+sudo modprobe br_netfilter
+```
+
+```
+echo "br_netfilter" | sudo tee /etc/modules-load.d/k8s.conf
+```
+
+```cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+     net.bridge.bridge-nf-call-iptables  = 1
+     net.ipv4.ip_forward                 = 1
+     net.bridge.bridge-nf-call-ip6tables = 1
+     EOF
+```
+```
+sudo sysctl --system
+```
+
+
+
 ### 🧠 For the Master node Only:
 
 run these commands in the master node (vm2)
@@ -185,27 +205,6 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 ```
 ```
 kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
-```
-
-
-### For the master node and the worker node
-
-```
-sudo modprobe br_netfilter
-```
-
-```
-echo "br_netfilter" | sudo tee /etc/modules-load.d/k8s.conf
-```
-
-```cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
-     net.bridge.bridge-nf-call-iptables  = 1
-     net.ipv4.ip_forward                 = 1
-     net.bridge.bridge-nf-call-ip6tables = 1
-     EOF
-```
-```
-sudo sysctl --system
 ```
 
 
