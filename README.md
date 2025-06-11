@@ -357,13 +357,35 @@ password : glpi
 
 ![glpi dashboard](./images/glpidash.JPG)
 
+
 Lets add a user in glpi by going to Administration > Users :
 
 ![glpi add user](./images/adduserglpi.JPG)
 
+
 Fill the user Info : 
 
 ![glpi user info](./images/userinfo.JPG)
+
+
+Lets login using the newly created user
+
+![glpi user login](./images/glpiuserlogin.JPG)
+
+
+After login in click on create ticket to create a new ticket
+
+![glpi user ticket](./images/createticket.JPG)
+
+
+Fill the ticket form info and click submit message
+
+![glpi ticket form](./images/ticketform.JPG)
+
+
+Back in the admin dashboard we can see the new ticket
+
+![glpi user info](./images/adminticket.JPG)
 
 
 ---
