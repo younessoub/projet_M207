@@ -388,6 +388,8 @@ Back in the admin dashboard we can see the new ticket
 ![glpi user info](./images/adminticket.JPG)
 
 
+
+
 ---
 
 ## 🔐 Step 9: Configure ONOS ACL Rules
@@ -477,6 +479,7 @@ FLUSH PRIVILEGES;
 * Restart any service using `docker restart <container_id>` or `kubectl rollout restart` if needed.
 * Make backups of important YAML and configuration files.
 
+
 ---
 
 ## 📚 Resources
@@ -487,3 +490,24 @@ FLUSH PRIVILEGES;
 * [GLPI Project](https://glpi-project.org/)
 
 ---
+
+##  👥 Project authors
+
+OUBELKACEM Youness
+
+TBATOU Abdelmalek
+
+TERICHE yassine
+
+AIT BRAHIM Imad
+
+Darouf Mohammed
+
+Sajid oualid
+
+tahiri abdellah
+
+AIT ABDELLAH Naoufal
+
+Lmslk Mustapha
+
