@@ -86,7 +86,7 @@ sudo docker build -t gateway .
 * `vm3`: will join as a **worker node**.
 
 Install Kubernetes components (`kubeadm`, `kubelet`, `kubectl`) using the [official guide](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm)
-Or you can use the following Instructions:
+,Or you can use the following Instructions:
 
 ### For the Master Node and The worker node:
 
@@ -95,8 +95,11 @@ Run these commands in both the master node (vm2) and the worker node (vm3):
 ```
 sudo swapoff -a
 ```
-
+```
+sudo nano /etc/fstab
+```
 comment swap line in /etc/fstab
+
 
 Install [Docker engine](https://docs.docker.com/engine/install/ubuntu/)
 
