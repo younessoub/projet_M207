@@ -357,6 +357,11 @@ password : glpi
 
 ![glpi dashboard](./images/glpidash.JPG)
 
+Lets add a user in glpi by going to Administration > Users :
+
+![glpi add user](./images/adduserglpi.JPG)
+
+
 ---
 
 ## 🔐 Step 9: Configure ONOS ACL Rules
