@@ -353,6 +353,15 @@ Access GLPI web UI on:
 
 And follow the steps to install glpi.
 
+For The sql server ip enter the mariadb container ip address
+
+SQL user is glpi_user
+
+and SQL password is glpi
+
+![glpi conn](./images/glpiconn.webp)
+
+
 
 After installing the glpi you should see the login page
 
