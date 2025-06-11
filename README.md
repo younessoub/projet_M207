@@ -345,7 +345,14 @@ cd glpi
 sudo docker compose up -d
 ```
 
-This brings up GLPI as a web-accessible containerized service for managing IT inventory.
+Access GLPI web UI on: 
+
+```
+ http://<vm1-ip>:80
+```
+
+And follow the steps to install glpi.
+
 
 After installing the glpi you should see the login page
 
