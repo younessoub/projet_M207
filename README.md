@@ -234,6 +234,12 @@ You should see something like this :
 
 On the **master node (vm2)**, apply the YAML service manifests provided in the repository:
 
+Create three files: http.yaml, samba.yaml and mysql.yaml 
+
+The contents for the files is provided in the k8s_services folder
+
+After saving them run the following commands
+
 ```bash
 kubectl apply -f http.yaml
 kubectl apply -f mysql.yaml
@@ -247,7 +253,7 @@ Check if services are running:
 ```bash
 kubectl get svc
 ```
-
+![get svc](./images/getsvc.JPG)
 ---
 
 ## 🧩 Step 4: Launch ONOS and Other Docker Services on `vm1`
