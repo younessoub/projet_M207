@@ -351,6 +351,11 @@ After installing the glpi you should see the login page
 
 ![glpi login](./images/glpilogin.JPG)
 
+user : glpi
+password : glpi
+
+![glpi dashboard](./images/glpidash.JPG)
+
 ---
 
 ## 🔐 Step 9: Configure ONOS ACL Rules
