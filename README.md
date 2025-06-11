@@ -347,6 +347,10 @@ sudo docker compose up -d
 
 This brings up GLPI as a web-accessible containerized service for managing IT inventory.
 
+After installing the glpi you should see the login page
+
+![glpi login](./images/glpilogin.JPG)
+
 ---
 
 ## 🔐 Step 9: Configure ONOS ACL Rules
