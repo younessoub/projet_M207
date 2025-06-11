@@ -169,6 +169,9 @@ run these commands in the master node (vm2)
 ```
 kubeadm init --pod-network-cidr=10.244.0.0/16 --apiserver-advertise-address=<master-node-ip>
 ```
+After running this command make sure to copy the kubeadm join line in order to execute it in the worker node
+
+![kubeadm join](./images/kubeinit.JPG)
 
 ```
 mkdir -p $HOME/.kube
