@@ -224,7 +224,7 @@ kubectl get nodes
 ```
 You should see something like this :
 
-![get nodes](nodes.JPG)
+![get nodes](./images/nodes.JPG)
 
 
 ---
