@@ -352,6 +352,7 @@ After installing the glpi you should see the login page
 ![glpi login](./images/glpilogin.JPG)
 
 user : glpi
+
 password : glpi
 
 ![glpi dashboard](./images/glpidash.JPG)
@@ -397,7 +398,7 @@ Connect to the MySQL service running in the Kubernetes cluster from `vm2`:
 mysql -h <master-node-ip> -P <service-port> -u root -p
 ```
 
-Password: `rootpass` (defined in `mysql.yaml`)
+Password: `rootpass` (defined in [mysql.yaml](./k8s_services/mysql.yaml) )
 
 ### 🔧 Create Databases
 
