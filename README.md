@@ -33,12 +33,14 @@ The infrastructure consists of **three Virtual Machines (VMs)**:
 
 ### ✅ Update System Packages
 
-Update the base system to ensure all packages are up to date.
+We will use the first vm (vm1) for hosting the sdn network emulator Containernet, the sdn controller Onos and GLPI.
+For this we have to install Docker. But first lets update the base system to ensure all packages are up to date.
 
 ```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
+We are going to clone this repositry also because it contains the necessary files for this project.
 ### 🔁 Clone the Repository
 
 Get the project files from GitHub:
