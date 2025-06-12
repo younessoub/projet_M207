@@ -2,9 +2,9 @@
 
 ## 📚 Table of Contents
 
-- [Table of Contents](## 📚 Table of Contents)
+- [Table of Contents](#-table-of-contents)
 - [Introduction](## 🧠 Introduction)
-- [Network Topology](#network-topology)
+- [Network Topology](#%EF%B8%8F-project-topology)
 - [VM1 Setup](## ⚙️ Step 1: Setup `vm1` (Linux Base))
 - [Installing Docker and Kubernetes](#installing-docker-and-kubernetes)
 - [Docker Services Setup](#docker-services-setup)
