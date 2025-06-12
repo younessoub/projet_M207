@@ -330,7 +330,7 @@ in the Containernet CLI run the following command :
 pingall
 ```
 
-if you go back to Onos GUI you should see something like this
+if you go back to Onos GUI you should see something like this (click on h to show hosts)
 
 ![onos topology](./images/onostopo.JPG)
 
@@ -363,7 +363,7 @@ and SQL password is glpi
 
 
 
-After installing the glpi you should see the login page
+After installing glpi you should see the login page
 
 ![glpi login](./images/glpilogin.JPG)
 
@@ -487,13 +487,11 @@ FLUSH PRIVILEGES;
 
 ---
 
-## ✅ Final Checklist & Tips
+## ✅ Tests
 
-* Ensure all VMs can communicate over the same network.
-* Use `kubectl get nodes` to verify Kubernetes cluster status.
-* Use `docker ps` on `vm1` to confirm running containers.
-* Restart any service using `docker restart <container_id>` or `kubectl rollout restart` if needed.
-* Make backups of important YAML and configuration files.
+To test the connectivity between hosts we use the command pingall in Containernet CLI
+
+![pingall](./tests/pingallJPG)
 
 
 ---
