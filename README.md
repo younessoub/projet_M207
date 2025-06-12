@@ -489,9 +489,34 @@ FLUSH PRIVILEGES;
 
 ## ✅ Tests
 
-#### To test the connectivity between hosts we use the command pingall in Containernet CLI
+#### To test the connectivity between hosts we use the command "pingall" in Containernet CLI
 
 ![pingall](./tests/pingall.JPG)
+
+
+### Hosts can access GLPI web  interface on port 80
+
+![nc glpi](./tests/nc_glpi.JPG)
+
+
+### Hosts can access the http service in kubernetes
+
+![nc http](./tests/nc_http.JPG)
+
+
+### Hosts can access Mysql service in kubernetes
+
+![nc mysql](./tests/nc_mysql.JPG)
+
+
+### Hosts can access Samba service in kubernetes
+
+![nc samba](./tests/nc_samba.JPG)
+
+
+### Hosts cannot ping the internet Because ACLs prevent it
+
+![ping internet](./tests/internet_ping.JPG)
 
 
 ---
