@@ -3,17 +3,21 @@
 ## 📚 Table of Contents
 
 - [Table of Contents](#-table-of-contents)
-- [Introduction](## 🧠 Introduction)
+- [Introduction](#-introduction)
 - [Network Topology](#%EF%B8%8F-project-topology)
-- [VM1 Setup](## ⚙️ Step 1: Setup `vm1` (Linux Base))
-- [Installing Docker and Kubernetes](#installing-docker-and-kubernetes)
-- [Docker Services Setup](#docker-services-setup)
-- [GLPI Configuration](#glpi-configuration)
-- [Kubernetes Deployment](#kubernetes-deployment)
-- [ONOS Access Control Lists (ACL)](#onos-access-control-lists-acl)
-- [Project Repository](#project-repository)
-- [Conclusion](#conclusion)
-- [Cleanup Instructions](#cleanup-instructions)
+- [VM1 Setup](#%EF%B8%8F-step-1-setup-vm1-linux-base)
+- [Kubernetes Setup](#%EF%B8%8F-step-2-setup-kubernetes-vm2--vm3)
+- [Deploy Kubernetes Services](#-step-3-deploy-services-on-kubernetes)
+- [Launch Onos and Containernet](#-step-4-launch-onos-and-containernet-on-vm1)
+- [Access Onos Web UI](#-step-5-access-onos-web-ui)
+- [Activate Onos Apps](#%EF%B8%8F-step-6-activate-onos-core-applications)
+- [Setup Topology in Containernet](#%EF%B8%8F-step-7-use-containernet-for-network-topology)
+- [Deploy GLPI](#-step-8-deploy-glpi-it-management-tool)
+- [Configure Onos ACLs](#-step-9-configure-onos-acl-rules)
+- [Configure Mysql Databases](#%EF%B8%8F-step-10-create-databases-in-mysql-kubernetes-service)
+- [Tests](#-tests)
+- [Resources](#-resources)
+- [Project Authors](#-project-authors)
 
 
 ## 🧠 Introduction
