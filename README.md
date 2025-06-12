@@ -1,5 +1,21 @@
 # 📘 SDN Project with Containernet, ONOS, Kubernetes & GLPI
 
+## 📚 Table of Contents
+
+- [Table of Contents](## 📚 Table of Contents)
+- [Introduction](## 🧠 Introduction)
+- [Network Topology](#network-topology)
+- [VM1 Setup](## ⚙️ Step 1: Setup `vm1` (Linux Base))
+- [Installing Docker and Kubernetes](#installing-docker-and-kubernetes)
+- [Docker Services Setup](#docker-services-setup)
+- [GLPI Configuration](#glpi-configuration)
+- [Kubernetes Deployment](#kubernetes-deployment)
+- [ONOS Access Control Lists (ACL)](#onos-access-control-lists-acl)
+- [Project Repository](#project-repository)
+- [Conclusion](#conclusion)
+- [Cleanup Instructions](#cleanup-instructions)
+
+
 ## 🧠 Introduction
 
 This project provides a comprehensive, hands-on implementation of **Software-Defined Networking (SDN)** using a hybrid infrastructure that combines **Containernet**, **ONOS controller**, **Kubernetes**, **Docker**, and **GLPI**. It demonstrates how SDN can simplify and enhance network management by decoupling the control plane from the data plane, allowing for centralized and programmable network control.
