@@ -235,7 +235,7 @@ kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/
 run the "kubeadm join" line you copied earlier
 
 
-### Check if kubeadm is set successfuly
+#### Check if kubeadm is set successfuly
 
 To check if the kubeadm is running and the worker node has joined run the following command in the master node : 
 
