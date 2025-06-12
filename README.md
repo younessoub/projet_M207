@@ -489,7 +489,7 @@ FLUSH PRIVILEGES;
 
 ## ✅ Tests
 
-To test the connectivity between hosts we use the command pingall in Containernet CLI
+### To test the connectivity between hosts we use the command pingall in Containernet CLI
 
 ![pingall](./tests/pingall.JPG)
 
