@@ -401,10 +401,13 @@ Fill the ticket form info and click submit message
 
 Back in the admin dashboard we can see the new ticket
 
-![glpi user info](./images/adminticket.JPG)
+![glpi admin ticket](./images/adminticket.JPG)
 
 
+After we click on the ticket we see the following where we can answer the client
 
+![glpi admin ticket answer](./images/glpi_answer_ticket.JPG)
+ 
 
 ---
 
